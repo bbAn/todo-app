@@ -31,28 +31,28 @@ const App = () => {
         text,
         checked: false,
       };
-      setTodos(todos.concat(todo));
+      setTodos(todos => todos.concat(todo)); // 어떻게 업데이트할지 정의해 주는 업데이트 함수를 넣어 줌. setTodos를 사용할 때 그 안에 todos =>만 앞에 넣어줌
       nextId.current += 1; // nextId 1씩 더하기
     },
-    [todos],
+    [],
   );
 
   const onRemove = useCallback(
     id => {
-      setTodos(todos.filter(todo => todo.id !== id));
+      setTodos(todos => todos.filter(todo => todo.id !== id));
     },
-    [todos],
+    [],
   );
 
   const onToggle = useCallback(
     id => {
-      setTodos(
+      setTodos(todos =>
         todos.map(todo =>  // 불변성을 유지하면서 특정 배열 원소를 업데이트해야 할 때 map을 사용하면 짧은 코드로 쉽게 작성 
           todo.id === id ? { ...todo, checked: !todo.checked } : todo,
         ),
       );
     },
-    [todos],
+    [],
   );
 
   return (
