@@ -36,6 +36,8 @@ function todoReducer(todos, action) {
 
 const App = () => {
   const [todos, dispatch] = useReducer(todoReducer, undefined, createBulkTodos);
+  // 두 번째 파라미터에 undefined를 넣고, 세 번째 파라미터에 초기 상태를 만들어 주는 함수인 createBulkTodos를 넣어 줌
+  // 이렇게 하면 컴포넌트가 맨 처음 렌더링될 때만 createBulkTodos 함수가 호출
 
   // 고윳값으로 사용될 id
   // ref를 사용하여 변수 담기
